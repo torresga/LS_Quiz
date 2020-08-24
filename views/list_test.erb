@@ -1,0 +1,15 @@
+<header>
+  <h1>Test <%= @test_id %> Results</h1>
+  <a href="../tests">Go Back to Tests</a>
+</header>
+
+<main>
+  <form action="/templates/<%= @template_id %>/tests/<%= @test_id %>/delete" method="post"><input type="submit" value="Delete This Test"></form>
+
+  <dl>
+  <% @questions_and_answers.each do |q_a| %>
+    <dt>Question: <%= q_a[:question] %></dt>
+    <dd>You answered: <%= @markdown_obj.render(q_a[:answer]) %></dd>
+  <% end %>
+  </dl>
+</main>

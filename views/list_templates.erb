@@ -1,0 +1,31 @@
+<div class="main-container">
+<header>
+  <h1>LS Assessment Simulator</h1>
+  <p>Study for your assessments by creating and taking mock exams.</p>
+</header>
+<main>
+  <section>
+    <a href="/templates/new">Add a new template</a>
+  </section>
+  <table>
+    <thead>
+      <tr>
+        <th>Test Templates</th>
+      <tr>
+    </thead>
+    <tbody>
+    <% @templates.each do |template| %>
+      <tr>
+        <td><%= template[:template_name] %></td>
+        <td><a href="/templates/<%= template[:template_id] %>">View</a></td>
+        <td>
+          <form action="/templates/<%= template[:template_id] %>/delete" method="post"><input type="submit" value="Delete Template"></form>
+        </td>
+        <td><a href="/templates/<%= template[:template_id] %>/tests">View Past Tests</a></td>
+        <td><a href="/templates/<%= template[:template_id] %>/tests/new">Take New Test</a></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</main>
+</div>

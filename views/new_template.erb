@@ -1,0 +1,64 @@
+<header>
+  <h1>Create A New Template</h1>
+</header>
+
+<main>
+      <form action="/templates" method="post">
+        <fieldset>
+        <label for="template_name">Template Name:
+          <input name="template_name" />
+        </label>
+        </fieldset>
+
+        <fieldset>
+          <input type="button" id="add_question" value="Add a question">
+        </fieldset>
+        <div id="questions" class="questions">
+        </div>
+        <input type="submit" value="Create Template" />
+      </form>
+      <script>
+        // Creates a new question
+        function createQuestion() {
+          var label = document.createElement('label');
+          var question_number = (document.getElementById("questions").children.length + 1);
+
+          label.textContent = "Question " + question_number;
+
+          var input = document.createElement('input');
+          input.setAttribute("name", "question_" + question_number);
+
+          label.appendChild(input);
+          return label;
+        }
+
+        var button = document.getElementById("add_question");
+
+        button.addEventListener('click', function(event) {
+          event.preventDefault();
+
+          var questions = document.getElementById('questions');
+          questions.appendChild(createQuestion());
+        });
+
+
+        // do a post request here for the submit button
+        var form = document.querySelector('form');
+
+        form.addEventListener('submit', function(event) {
+          event.preventDefault();
+
+          var formData = new FormData(form);
+
+          var XHR = new XMLHttpRequest();
+
+          XHR.open("POST", form.action);
+
+          XHR.addEventListener('load', function(event) {
+            window.location = "/templates";
+          });
+
+          XHR.send(formData);
+        });
+      </script>
+</main>

@@ -1,0 +1,18 @@
+<form action="/templates/<%= @template[:template_id] %>" method="post">
+      <fieldset>
+          <label for="template_name">Template Name:
+            <input name="template_name" value="<%= @template[:template_name] %>"/>
+          </label>
+
+          <div id="questions">
+            <% @questions.each do |question| %>
+            <h4>Current Question</h4>
+            <label for="question_<%= question[:question_id] %>"><%= question[:question_value] %>
+            <h4>New Question:</h4>
+            <input type="text" name="question_<%= question[:question_id] %>" value="<%= question[:question_value] %>"/>
+            </label>
+            <% end %>
+          </div>
+        </fieldset>
+      <button type="submit">Edit Template</button>
+</form>

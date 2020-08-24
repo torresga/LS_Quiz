@@ -1,0 +1,13 @@
+<header>
+  <h1>Template for: <%= @template[:template_name] %></h1>
+  <p>Created on: <%= @template[:created_on] %></p>
+  <a href="<%= @template[:template_id] %>/edit">Edit Template</a>
+</header>
+<main>
+  <h2>Questions:</h2>
+  <ol>
+  <% @questions.each do |question| %>
+    <li><%= question[:question_value] %></li>
+  <% end %>
+  </ol>
+</main>

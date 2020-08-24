@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>New Test for <%= @template[:template_name] %></h1>
+    <p>Created on <%= @test[:created_on] %></p>
+    <%= @test %>
+    <form action="/templates/<%= @template_id %>/tests" method="post" class="questions">
+      <% @questions.each do |question| %>
+      <label for="question_<%= question[:question_id] %>"><%= question[:question_value] %>
+        <textarea name="question_<%= question[:question_id] %>"></textarea>
+      </label>
+      <% end %>
+      <input type="submit" value="Save Test" />
+    </form>
+  </body>
+</html>

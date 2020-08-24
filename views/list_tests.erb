@@ -1,0 +1,11 @@
+<header>
+  <h1>Tests for <%= @template[:template_name] %></h1>
+</header>
+
+<main>
+  <ul>
+    <% @tests.each do |test| %>
+      <li><a href="/templates/<%= @template_id %>/tests/<%= test[:test_id] %>">Test <%= test[:test_id] %></a>, created on <%= test[:created_on] %></li>
+    <% end %>
+  </ul>
+</main>
