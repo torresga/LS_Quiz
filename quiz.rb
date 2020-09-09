@@ -17,6 +17,10 @@ def select_questions(params)
   params.select {|key, _| key.start_with?("question_")}
 end
 
+get "/" do
+  redirect "/templates"
+end
+
 # GET /templates - view all templates
 get "/templates" do
   @templates = @storage.all_templates
