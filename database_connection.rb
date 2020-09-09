@@ -4,7 +4,12 @@ require 'pg'
 
 class DatabaseConnection
   def initialize
-    @connection = PG.connect(dbname: 'ls_quiz')
+    @connection = if Sinatra::Base.production?
+      PG.connect(ENV['DATABASE_URL'])
+    else
+      PG.connect(dbname: 'ls_quiz')
+    end
+    
     setup_schema
   end
 
