@@ -11,3 +11,7 @@ gem "minitest"
 gem "rack-test"
 gem "pg"
 gem "redcarpet"
+
+group :production do
+  gem "puma"
+end
